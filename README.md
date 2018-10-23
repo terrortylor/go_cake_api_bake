@@ -1,4 +1,4 @@
-# go_cake_api_mix
+# go_cake_api_bake
 A basic API for testing with.
 It's part of three API's that pass JSON around and manipulate it.
 
