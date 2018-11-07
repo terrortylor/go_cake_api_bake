@@ -5,6 +5,7 @@ import (
   "log"
   "net/http"
   "github.com/gorilla/mux"
+  "github.com/rs/cors"
 )
 
 type Bowl struct {
@@ -38,7 +39,8 @@ func main() {
   router := mux.NewRouter()
   router.HandleFunc("/heatoven", PostHeatOven).Methods("POST")
   router.HandleFunc("/bake", PostBake).Methods("POST")
-  log.Fatal(http.ListenAndServe(":8000", router))
+	handler := cors.Default().Handler(router)
+	log.Fatal(http.ListenAndServe(":8000", handler))
 }
 
 func PostHeatOven(rw http.ResponseWriter, req *http.Request) {
